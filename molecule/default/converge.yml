@@ -2,10 +2,37 @@
 - name: Converge
   hosts: all
   become: true
+  vars:
+    # SWAG
+    swag_data: "/var/local/swag"
+    swag_port_http: 3080
+    swag_port_https: 3443
+
+    swag_tz: "Europe/Brussels"
+    swag_url: "laurivan.com"
+    swag_validation: "dns"
+    swag_subdomains: "wildcard"
+    swag_certprovider: 
+    swag_dnsplugin: "cloudflare"
+    swag_propagation: 30
+    swag_duckdnstoken:
+    swag_email: "laur.ivan@gmail.com"
+    swag_onlysubdomains: "false"
+    swag_extra_domains: ""
+    swag_staging: "true"
+
+    swag_dns_config:
+      src: "cloudflare.ini.j2"
+      dst: "cloudflare.ini"
+
 
   pre_tasks:
     - name: Update apt cache.
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
+    - name: Install python requests
+      pip:
+        name: 
+          - requests
   roles:
     - role: laurivan.swag

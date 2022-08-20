@@ -23,11 +23,12 @@ swag_onlysubdomains: "false"
 swag_extra_domains: 
 swag_staging: "false"
 
+cloudflare_api_token:
+cloudflare_api_key:
+
 # The list of config files to be added to
 # the SWAG configuration
-swag_config_files:
-  # core
-  - { src: { protocol: "https", host: "core", port: "8443"}, template_name: "unifi.config.j2", alias: "unifi", domain: "{{ domain_home_suffix }}" }
+swag_config_files: []
 
 swag_uid: 1000
 swag_gid: 1000

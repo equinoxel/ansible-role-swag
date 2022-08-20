@@ -17,6 +17,7 @@
   ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "{{ swag_config }}/{{ item }}"
+    mode: 0600
   loop:
     - "env.swag.conf"
   tags:
