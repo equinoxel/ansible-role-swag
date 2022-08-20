@@ -1,0 +1,33 @@
+---
+# defaults file for infrastructure/swag
+
+swag_container_name: "swag"
+swag_image_version: "latest"
+
+swag_data: "/mnt/data/swag"
+swag_config: "{{ swag_data }}/config"
+
+swag_port_http: 3080
+swag_port_https: 3443
+
+swag_tz: "Europe/Brussels"
+swag_url: "example.com"
+swag_validation: "dns"
+swag_subdomains: 
+swag_certprovider: 
+swag_dnsplugin: "cloudflare"
+swag_propagation:
+swag_duckdnstoken:
+swag_email: "user@example.com"
+swag_onlysubdomains: "false"
+swag_extra_domains: 
+swag_staging: "false"
+
+# The list of config files to be added to
+# the SWAG configuration
+swag_config_files:
+  # core
+  - { src: { protocol: "https", host: "core", port: "8443"}, template_name: "unifi.config.j2", alias: "unifi", domain: "{{ domain_home_suffix }}" }
+
+swag_uid: 1000
+swag_gid: 1000

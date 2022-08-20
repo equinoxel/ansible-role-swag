@@ -1,0 +1,8 @@
+---
+# tasks file for infrastructure/swag
+
+- name: Configure SWAG
+  include_tasks: config.yml
+
+- name: Install SWAG
+  include_tasks: install.yml

@@ -1,0 +1,31 @@
+---
+
+- name: Set up directories
+  file:
+    state: directory
+    path: "{{ item }}"
+  with_items:
+    - "{{ swag_data }}"
+    - "{{ swag_data }}/dns-conf"
+    - "{{ swag_data }}/www"
+    - "{{ swag_data }}/nginx/site-confs"
+    - "{{ swag_data }}/nginx/proxy-confs"
+    - "{{ swag_config }}"
+  become: true
+
+- name: Write SWAG docker configuration
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "{{ swag_config }}/{{ item }}"
+  loop:
+    - "env.swag.conf"
+  tags:
+    - configuration
+
+- name: Write SWAG dns config
+  ansible.builtin.template:
+    src: "{{ swag_dns_config.src }}"
+    dest: "{{ swag_data }}/dns-conf/{{ swag_dns_config.dst }}"
+  when: swag_dns_config and swag_dns_config != "none"
+  tags:
+    - configuration

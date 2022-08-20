@@ -1,0 +1,25 @@
+---
+
+- name: Create the swag container
+  docker_container:
+    name: "{{ swag_container_name }}"
+    #hostname: "{{ swag_host_name }}"
+    image: "lscr.io/linuxserver/swag:{{swag_image_version }}"
+    # recreate: yes
+    restart: yes
+    restart_policy: always
+    # user: "{{ swag_uid }}:{{ swag_gid }}"
+    env_file: "{{ swag_config }}/env.swag.conf"
+    volumes:
+      - "{{ swag_data }}:/config"
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "{{ swag_port_http }}:80"
+      - "{{ swag_port_https }}:443"
+    capabilities:
+      - NET_ADMIN
+  changed_when: false
+  tags:
+    - install
+  # become: yes
