@@ -1,5 +1,5 @@
 ---
-# defaults file for infrastructure/swag
+# defaults file for laurivan.swag
 
 swag_container_name: "swag"
 swag_image_version: "latest"
@@ -26,9 +26,10 @@ swag_staging: "false"
 cloudflare_api_token:
 cloudflare_api_key:
 
-# The list of config files to be added to
-# the SWAG configuration
-swag_config_files: []
+swag_dns_config:
+  src: "cloudflare.ini.j2"
+  dst: "cloudflare.ini"
+
 
 swag_uid: 1000
 swag_gid: 1000
