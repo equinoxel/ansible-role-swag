@@ -10,7 +10,6 @@ swag_config: "{{ swag_data }}/config"
 
 swag_port_http: 3080
 swag_port_https: 3443
-swag_dashboard_http: 3081
 
 swag_tz: "Europe/Brussels"
 swag_url: "example.com"
