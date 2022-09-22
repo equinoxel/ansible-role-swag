@@ -2,6 +2,7 @@
 # defaults file for laurivan.swag
 
 swag_container_name: "swag"
+swag_container_mods: "linuxserver/mods:swag-auto-reload|linuxserver/mods:swag-dashboard"
 swag_image_version: "latest"
 
 swag_data: "/mnt/data/swag"
