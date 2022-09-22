@@ -17,6 +17,7 @@
     ports:
       - "{{ swag_port_http }}:80"
       - "{{ swag_port_https }}:443"
+      - "{{ swag_dashboard_http }}:81"
     capabilities:
       - NET_ADMIN
   changed_when: false
